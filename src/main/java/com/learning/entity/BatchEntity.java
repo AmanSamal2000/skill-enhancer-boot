@@ -1,5 +1,6 @@
 package com.learning.entity;
 
+import com.learning.enums.BatchStatus;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -24,6 +25,7 @@ public class BatchEntity {
 	private Integer studentCount;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private BatchStatus batchStatus;
 	private Long courseId;
 	private Long timeSlotId;
 
