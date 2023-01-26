@@ -1,4 +1,4 @@
-package com.learning.rest;
+package com.learning.mongorest;
 
 
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learning.model.StudentBatchModel;
-import com.learning.service.Impl.StudentBatchService;
+import com.learning.mongoservice.Impl.StudentBatchService;
 
 
 @RestController

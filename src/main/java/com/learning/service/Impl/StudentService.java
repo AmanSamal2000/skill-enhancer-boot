@@ -1,4 +1,4 @@
-package com.learning.service.Impl;
+package com.learning.mongoservice.Impl;
 
 import java.io.IOException;
 import java.util.*;
@@ -8,14 +8,13 @@ import com.learning.constants.NumberConstants;
 import com.learning.utility.excel.StudentReader;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.entity.StudentEntity;
+import com.learning.collection.StudentEntity;
 import com.learning.model.StudentModel;
-import com.learning.repository.StudentRepository;
-import com.learning.service.CommonService;
+import com.learning.mongorepository.StudentRepository;
+import com.learning.mongoservice.CommonService;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service

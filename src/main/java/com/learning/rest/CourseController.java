@@ -1,4 +1,4 @@
-package com.learning.rest;
+package com.learning.mongorest;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learning.model.CourseModel;
-import com.learning.service.Impl.CourseService;
+import com.learning.mongoservice.Impl.CourseService;
 
 
 @RestController

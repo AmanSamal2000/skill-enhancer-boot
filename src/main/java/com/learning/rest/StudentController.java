@@ -1,4 +1,4 @@
-package com.learning.rest;
+package com.learning.mongorest;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import com.learning.model.StudentModel;
-import com.learning.service.Impl.StudentService;
+import com.learning.mongoservice.Impl.StudentService;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController

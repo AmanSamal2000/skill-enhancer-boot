@@ -1,8 +1,6 @@
-package com.learning.entity;
+package com.learning.collection;
 
 import lombok.*;
-
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

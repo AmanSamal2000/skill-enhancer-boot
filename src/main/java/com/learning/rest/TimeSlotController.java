@@ -1,4 +1,4 @@
-package com.learning.rest;
+package com.learning.mongorest;
 
 
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.learning.model.TimeSlotModel;
-import com.learning.service.Impl.TimeSlotService;
+import com.learning.mongoservice.Impl.TimeSlotService;
 
 
 @RestController

@@ -1,22 +1,19 @@
-package com.learning.service.Impl;
+package com.learning.mongoservice.Impl;
 
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 import com.learning.constants.NumberConstants;
-import com.learning.entity.StudentEntity;
-import com.learning.model.StudentModel;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.entity.BatchEntity;
+import com.learning.collection.BatchEntity;
 import com.learning.model.BatchModel;
-import com.learning.repository.BatchRepository;
-import com.learning.service.CommonService;
+import com.learning.mongorepository.BatchRepository;
+import com.learning.mongoservice.CommonService;
 
 
 @Service

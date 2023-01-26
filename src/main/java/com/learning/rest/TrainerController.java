@@ -1,4 +1,4 @@
-package com.learning.rest;
+package com.learning.mongorest;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.learning.model.TrainerModel;
-import com.learning.service.Impl.TrainerService;
+import com.learning.mongoservice.Impl.TrainerService;
 
 @RestController
 @RequestMapping("/trainer")

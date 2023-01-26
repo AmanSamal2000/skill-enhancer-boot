@@ -1,10 +1,9 @@
-package com.learning.entity;
+package com.learning.collection;
 
 import com.learning.enums.BatchStatus;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

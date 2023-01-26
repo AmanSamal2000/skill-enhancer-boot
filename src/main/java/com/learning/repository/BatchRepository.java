@@ -1,8 +1,8 @@
-package com.learning.repository;
+package com.learning.mongorepository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.learning.entity.BatchEntity;
+import com.learning.collection.BatchEntity;
 
 
 
