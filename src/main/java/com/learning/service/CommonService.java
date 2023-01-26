@@ -1,4 +1,4 @@
-package com.learning.mongoservice;
+package com.learning.service;
 
 import java.util.List;
 import java.util.Optional;

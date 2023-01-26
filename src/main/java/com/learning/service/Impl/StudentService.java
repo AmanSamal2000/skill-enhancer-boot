@@ -1,4 +1,4 @@
-package com.learning.mongoservice.Impl;
+package com.learning.service.Impl;
 
 import java.io.IOException;
 import java.util.*;
@@ -11,10 +11,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.collection.StudentEntity;
+import com.learning.entity.StudentEntity;
 import com.learning.model.StudentModel;
-import com.learning.mongorepository.StudentRepository;
-import com.learning.mongoservice.CommonService;
+import com.learning.repository.StudentRepository;
+import com.learning.service.CommonService;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -30,7 +30,6 @@ public class StudentService implements CommonService<StudentModel, Long> {
         List<StudentEntity> studentEntityList = studentRepository.findAll();
         if (!CollectionUtils.isEmpty(studentEntityList)) {
             List<StudentModel> studentModelList = studentEntityList.stream().map(studentEntity -> {
-
                 StudentModel studentModel = new StudentModel();
                 //BeanUtils.copyProperties(studentEntity, studentModel);
                 modelMapper.map(studentEntity, studentModel);

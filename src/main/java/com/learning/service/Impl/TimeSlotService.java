@@ -1,4 +1,4 @@
-package com.learning.mongoservice.Impl;
+package com.learning.service.Impl;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -9,10 +9,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.collection.TimeSlotEntity;
+import com.learning.entity.TimeSlotEntity;
 import com.learning.model.TimeSlotModel;
-import com.learning.mongorepository.TimeSlotRepository;
-import com.learning.mongoservice.CommonService;
+import com.learning.repository.TimeSlotRepository;
+import com.learning.service.CommonService;
 
 @Service
 @RequiredArgsConstructor

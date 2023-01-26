@@ -1,20 +1,16 @@
-package com.learning.mongorest;
+package com.learning.rest;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.learning.model.TrainerModel;
-import com.learning.mongoservice.Impl.TrainerService;
+import com.learning.service.Impl.TrainerService;
 
 @RestController
 @RequestMapping("/trainer")
@@ -43,4 +39,34 @@ public class TrainerController {
     public TrainerModel updateById(@PathVariable Long id, @RequestBody TrainerModel trainerModel) {
         return trainerService.updatedRecordById(id, trainerModel);
     }
+
+//Array postmapping method
+
+ /*   @GetMapping("get-records")
+    public List<TrainerModel> getAllRecords(@RequestParam(value = "count", required = false, defaultValue = "0") int count, @RequestParam(value = "sortBy", required = false, defaultValue = "") String sortBy) {
+        if (count == 0 && (Objects.isNull(sortBy) || sortBy.isBlank())) {
+            return trainerService.getAllRecords();
+        } else if (count > 0) {
+            return trainerService.getLimitedRecords(count);
+        } else {
+            return trainerService.getSortedRecords(sortBy);
+        }
+    }
+
+    @PostMapping
+    public List<TrainerModel> save(@RequestBody List<TrainerModel> trainerModelList) {
+        try {
+            if (trainerModelList.size() == 1) {
+                return Arrays.asList(trainerService.saveRecord(trainerModelList.get(0)));
+            } else {
+                return trainerService.saveAll(trainerModelList);
+            }
+        } catch (Exception exception) {
+            System.out.println("Exception Occurs in StudentController || saveAll");
+            System.err.print(exception);
+            return Collections.emptyList();
+        }
+    }*/
+
+
 }

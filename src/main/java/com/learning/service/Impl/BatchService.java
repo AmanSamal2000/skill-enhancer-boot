@@ -1,4 +1,4 @@
-package com.learning.mongoservice.Impl;
+package com.learning.service.Impl;
 
 
 import java.util.*;
@@ -10,10 +10,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.collection.BatchEntity;
+import com.learning.entity.BatchEntity;
 import com.learning.model.BatchModel;
-import com.learning.mongorepository.BatchRepository;
-import com.learning.mongoservice.CommonService;
+import com.learning.repository.BatchRepository;
+import com.learning.service.CommonService;
 
 
 @Service

@@ -1,20 +1,17 @@
-package com.learning.mongorest;
+package com.learning.rest;
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Objects;
 
 import com.learning.model.StudentBatchModel;
-import com.learning.mongoservice.Impl.StudentBatchService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import com.learning.model.StudentBatchModel;
+import com.learning.service.Impl.StudentBatchService;
 
 
 @RestController
@@ -44,4 +41,37 @@ public class StudentBatchController {
     public StudentBatchModel updateById(@PathVariable Long id, @RequestBody StudentBatchModel studentBatchModel) {
         return studentBatchService.updatedRecordById(id, studentBatchModel);
     }
+
+    //Array postmapping method
+    /*
+
+    @GetMapping("get-records")
+    public List<StudentBatchModel> getAllRecords(@RequestParam(value = "count", required = false, defaultValue = "0") int count, @RequestParam(value = "sortBy", required = false, defaultValue = "") String sortBy) {
+        if (count == 0 && (Objects.isNull(sortBy) || sortBy.isBlank())) {
+            return studentBatchService.getAllRecords();
+        } else if (count > 0) {
+            return studentBatchService.getLimitedRecords(count);
+        } else {
+            return studentBatchService.getSortedRecords(sortBy);
+        }
+    }
+
+
+
+    @PostMapping
+    public List<StudentBatchModel> save(@RequestBody List<StudentBatchModel> studentBatchModelList) {
+        try {
+            if (studentBatchModelList.size() == 1) {
+                return Arrays.asList(studentBatchService.saveRecord(studentBatchModelList.get(0)));
+            } else {
+                return studentBatchService.saveAll(studentBatchModelList);
+            }
+        } catch (Exception exception) {
+            System.out.println("Exception Occurs in StudentController || saveAll");
+            System.err.print(exception);
+            return Collections.emptyList();
+        }
+    }*/
+
+
 }

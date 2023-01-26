@@ -1,4 +1,4 @@
-package com.learning.mongoservice.Impl;
+package com.learning.service.Impl;
 
 
 import java.util.*;
@@ -10,10 +10,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import com.learning.collection.CourseEntity;
+import com.learning.entity.CourseEntity;
 import com.learning.model.CourseModel;
-import com.learning.mongorepository.CourseRepository;
-import com.learning.mongoservice.CommonService;
+import com.learning.repository.CourseRepository;
+import com.learning.service.CommonService;
 
 @Service
 @RequiredArgsConstructor
