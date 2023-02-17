@@ -1,15 +1,14 @@
 package com.learning.rest;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+import com.learning.service.StudentService;
+import com.learning.utility.email.EmailSender;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.learning.model.StudentModel;
-import com.learning.service.Impl.StudentService;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -19,15 +18,37 @@ public class StudentController {
 
     private final StudentService studentService;
 
+     @Autowired
+     private EmailSender emailSender;
 
     @GetMapping
-    public List<StudentModel> getAllStudent() {
+    public List<StudentModel> getAllRecords() {
         return studentService.getAllRecords();
+    }
+
+    @GetMapping("/limited-records")
+    public List<StudentModel> getLimitedRecords(@RequestParam(value = "count" ,required = false , defaultValue = "0") int count){
+        return studentService.getLimitedRecords(count);
+    }
+
+    @GetMapping("/sorted-records")
+    public List<StudentModel> getSortedRecords(@RequestParam(value = "sortBy", required = false, defaultValue = "") String sortBy){
+        return studentService.getSortedRecords(sortBy);
+    }
+
+    @GetMapping("/recordBy-id")
+    public StudentModel getRecordById(Long id){
+        return studentService.getRecordById(id);
     }
 
     @PostMapping
     public StudentModel save(@RequestBody StudentModel studentModel) {
         return studentService.saveRecord(studentModel);
+    }
+
+    @PostMapping("/save-all")
+    public List<StudentModel> saveAll(List<StudentModel> studentModelList){
+        return studentService.saveAll(studentModelList);
     }
 
     @DeleteMapping("/{id}")
@@ -45,10 +66,18 @@ public class StudentController {
             return "file uploaded successfully";
     }
 
-    @GetMapping("/excel-data")
-    public List<StudentModel> getDataFromExcel() {
-        return studentService.getDataFromExcel();
+    @PostMapping("/email")
+    public void emailSender(){
+        studentService.emailSender();
     }
+    @PostMapping("/email/attachment")
+    public void sentEmailWithAttachment() {
+        studentService.sentEmailWithAttachment();
+    }
+
+
+
+
 
 
     //Array postmapping method

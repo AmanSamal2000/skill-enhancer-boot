@@ -1,19 +1,15 @@
 package com.learning.rest;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-import com.learning.model.StudentModel;
 import com.learning.model.TimeSlotModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.learning.model.TimeSlotModel;
-import com.learning.service.Impl.TimeSlotService;
+import com.learning.service.mysql.TimeSlotMysqlService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -21,13 +17,34 @@ import com.learning.service.Impl.TimeSlotService;
 @RequiredArgsConstructor
 public class TimeSlotController {
 
-    private final TimeSlotService timeSlotService;
+    private final TimeSlotMysqlService timeSlotService;
 
 
     @GetMapping
-    public List<TimeSlotModel> getAllTimeSlot() {
+    public List<TimeSlotModel> getAllRecords() {
         return timeSlotService.getAllRecords();
     }
+
+    @GetMapping("/limited-records")
+    public List<TimeSlotModel> getLimitedRecords(@RequestParam(value = "count" ,required = false , defaultValue = "0") int count){
+        return timeSlotService.getLimitedRecords(count);
+    }
+
+    @GetMapping("/sorted-records")
+    public List<TimeSlotModel> getSortedRecords(@RequestParam(value = "sortBy", required = false, defaultValue = "") String sortBy){
+        return timeSlotService.getSortedRecords(sortBy);
+    }
+
+    @GetMapping("/recordBy-id")
+    public Optional<TimeSlotModel> getRecordById(Long id){
+        return timeSlotService.getRecordById(id);
+    }
+
+    @PostMapping("/save-all")
+    public List<TimeSlotModel> saveAll(List<TimeSlotModel> timeSlotModelList){
+        return timeSlotService.saveAll(timeSlotModelList);
+    }
+
 
     @PostMapping
     public TimeSlotModel save(@RequestBody TimeSlotModel timeSlotModel) {
@@ -42,6 +59,12 @@ public class TimeSlotController {
     @PutMapping("/{id}")
     public TimeSlotModel updateById(@PathVariable Long id, @RequestBody TimeSlotModel timeSlotModel) {
         return timeSlotService.updatedRecordById(id, timeSlotModel);
+    }
+
+    @PostMapping("/upload")
+    public String uploadExcelFile(@RequestParam("file") MultipartFile file){
+        timeSlotService.saveExcelFile(file);
+        return "file uploaded successfully";
     }
 
     //Array postmapping method

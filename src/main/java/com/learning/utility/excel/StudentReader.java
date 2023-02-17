@@ -9,7 +9,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.learning.entity.StudentEntity;
+import com.learning.entity.mysql.StudentEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,7 +27,7 @@ public class StudentReader {
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 
             //getting sheet at which my data is present
-            XSSFSheet sheet = workbook.getSheetAt(0);//starts with 0
+            XSSFSheet sheet = workbook.getSheetAt(1);//starts with 0
 
             getStudentList(sheet, studentEntityList);//private method to get student list
 

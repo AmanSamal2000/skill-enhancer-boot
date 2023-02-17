@@ -1,17 +1,14 @@
 package com.learning.rest;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import com.learning.model.BatchModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import com.learning.model.BatchModel;
-import com.learning.service.Impl.BatchService;
+import com.learning.service.mysql.BatchMysqlService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -19,13 +16,34 @@ import com.learning.service.Impl.BatchService;
 @RequiredArgsConstructor
 public class BatchController {
 
-    private final BatchService batchService;
+    private final BatchMysqlService batchService;
 
 
     @GetMapping
     public List<BatchModel> getAllBatch() {
         return batchService.getAllRecords();
     }
+
+    @GetMapping("/limited-records")
+    public List<BatchModel> getLimitedRecords(@RequestParam(value = "count" ,required = false , defaultValue = "0") int count){
+        return batchService.getLimitedRecords(count);
+    }
+
+    @GetMapping("/sorted-records")
+    public List<BatchModel> getSortedRecords(@RequestParam(value = "sortBy", required = false, defaultValue = "") String sortBy){
+        return batchService.getSortedRecords(sortBy);
+    }
+
+    @GetMapping("/recordBy-id")
+    public Optional<BatchModel> getRecordById(Long id){
+        return batchService.getRecordById(id);
+    }
+
+    @PostMapping("/save-all")
+    public List<BatchModel> saveAll(List<BatchModel> batchModelList){
+        return batchService.saveAll(batchModelList);
+    }
+
 
     @PostMapping
     public BatchModel save(@RequestBody BatchModel batchModel) {
@@ -40,6 +58,12 @@ public class BatchController {
     @PutMapping("/{id}")
     public BatchModel updateById(@PathVariable Long id, @RequestBody BatchModel batchModel) {
         return batchService.updatedRecordById(id, batchModel);
+    }
+
+    @PostMapping("/upload")
+    public String uploadExcelFile(@RequestParam ("file") MultipartFile file){
+        batchService.saveExcelFile(file);
+        return "file uploaded successfully";
     }
 
     //Array postmapping method
